@@ -6,14 +6,7 @@ using System.Threading.Tasks;
 
 namespace TreeAlgorithms
 {
-    class RedBlack_Tree<T>
+    class BaseTree
     {
-
-        class AVL_Node : Node<T>
-        {
-            public AVL_Node(T value) : base(value)
-            {
-            }
-        }
     }
 }
