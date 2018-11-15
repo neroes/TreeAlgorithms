@@ -9,12 +9,7 @@ namespace TreeAlgorithms
     public class AVL_Tree<T> : BaseTree<T> where T : IComparable, IEquatable<T>
     {
         //private AVL_Node tree_Root;// our tree root
-        private BaseTree<T> baseTree;
         private List<AVL_Node> markedForSorting = new List<AVL_Node>();// what nodes have made the tree unsorted
-        public AVL_Tree()
-        { 
-            baseTree = (BaseTree<T>)this;
-        }
         public new void Insert(T value)
         {
             InsertSingle(value);
@@ -31,7 +26,7 @@ namespace TreeAlgorithms
         private void InsertSingle(T value)
         {
             AVL_Node newNode = new AVL_Node(value);
-            baseTree.InsertSingleNode((Node<T>)newNode);
+            base.InsertSingleNode((Node<T>)newNode);
             markedForSorting.Add(newNode);
             /*AVL_Node insertParent = SearchNode(value);// we proberbly need some fix incase there is a matching value in the tree
             
@@ -53,7 +48,7 @@ namespace TreeAlgorithms
         }
         public new AVL_Node SearchNode(T value)
         {
-            return (AVL_Node)baseTree.SearchNode(value);
+            return (AVL_Node)base.SearchNode(value);
             /*AVL_Node current_Node = tree_Root;
             if (current_Node == null) { return null; }
             while(!current_Node.value.Equals(value))

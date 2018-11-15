@@ -24,7 +24,7 @@ namespace TreeAlgorithms
         {
             InsertSingleNode(new Node<T>(value));
         }
-        public void InsertSingleNode(Node<T> newNode)
+        protected void InsertSingleNode(Node<T> newNode)
         {
             Node<T> insertParent = SearchNode(newNode.value);
             if (insertParent.value.Equals(newNode.value)) { throw new Exception("values are the same"); }//our tree is limited to one node pr value (some trees alow for multiple instances of value)
@@ -61,15 +61,30 @@ namespace TreeAlgorithms
         public void Delete(Node<T> node)
         {
             bool isroot = (node != tree_Root);
+            bool isRightChild = node.Parent.RightChild.Equals(node);
             if (node.LeftChild == null)
             {
-                if (node.RightChild == null)
+                if (node.RightChild == null)// has no children
                 {
-                    if (isroot) { tree_Root = null; } // case = is only node
+                    if (isroot) { tree_Root = null; } // is only node in tree
+                    else if (isRightChild){ node.Parent.SetRightChild(null); }
+                    else { node.Parent.SetLeftChild(null); }
+                }
+                else// has only right child
+                {
+                    if (isRightChild) { node.Parent.SetRightChild(node.RightChild); }
+                    else { node.Parent.SetLeftChild(node.RightChild); }
                 }
             }
-            else if (node.RightChild == null) { }
-            else { }
+            else if (node.RightChild == null)//has only left child
+            {
+                if (isRightChild) { node.Parent.SetRightChild(node.LeftChild); }
+                else { node.Parent.SetLeftChild(node.LeftChild); }
+            }
+            else// has 2 children
+            {
+                throw new NotImplementedException();
+            }
         }
         public void Delete(T value)
         {
