@@ -6,12 +6,26 @@ using System.Threading.Tasks;
 
 namespace TreeAlgorithms
 {
-    class RedBlack_Tree<T>
+    class RedBlack_Tree<T> : ITree<T> where T : IComparable
     {
-
-        class AVL_Node : Node<T>
+        public void Insert(T value)
         {
-            public AVL_Node(T value) : base(value)
+            throw new NotImplementedException();
+        }
+
+        public void Insert(List<T> values)
+        {
+            throw new NotImplementedException();
+        }
+
+        public T Search(T value)
+        {
+            throw new NotImplementedException();
+        }
+
+        class RedBlack_Node : Node<T>
+        {
+            public RedBlack_Node(T value) : base(value)
             {
             }
         }
