@@ -8,8 +8,9 @@ namespace TreeAlgorithms
 {
     interface ITree<T> where T : IComparable, IEquatable<T>
     {
-        Node<T> SearchNode(T Value);
+        //Node<T> SearchNode(T Value);
         T Search(T value);
+        List<T> Search(T min, T max);
         void Insert(T value);
         void Insert(List<T> values);
         void Delete(T value);

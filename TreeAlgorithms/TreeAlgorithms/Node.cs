@@ -42,5 +42,12 @@ namespace TreeAlgorithms
             else if (obj is T) { return value.CompareTo((T)obj); } // is same type as value and is therefore directy compared
             throw new Exception("object wasn't of same type of node or same type of value");// we don't know what to do with this type of input
         }
+        public StringBuilder BuildValueString(StringBuilder st)
+        {
+            if(LeftChild != null) { LeftChild.BuildValueString(st); }
+            st.Append(" " + value);
+            if(RightChild != null) { RightChild.BuildValueString(st); }
+            return st;
+        }
     }
 }

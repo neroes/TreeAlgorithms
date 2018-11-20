@@ -6,19 +6,23 @@ using System.Threading.Tasks;
 
 namespace TreeAlgorithms
 {
-    class RedBlack_Tree<T> : ITree<T> where T : IComparable
+    class RedBlack_Tree<T> : BaseTree<T> where T : IComparable, IEquatable<T>
     {
-        public void Insert(T value)
+        public new void Insert(T value)
         {
             throw new NotImplementedException();
         }
 
-        public void Insert(List<T> values)
+        public new void Insert(List<T> values)
         {
             throw new NotImplementedException();
         }
 
-        public T Search(T value)
+        public new void Delete(T value)
+        {
+            throw new NotImplementedException();
+        }
+        public new void Delete(Node<T> node)
         {
             throw new NotImplementedException();
         }
